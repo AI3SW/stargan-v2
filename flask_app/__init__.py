@@ -10,10 +10,13 @@ from datetime import datetime
 
 logging.getLogger().setLevel(0)  # Allows all messages to go through logger, msg to be filtered at handlers
 
-ID = LOGGING_CONFIG['handlers']['instance']['filename'][2:-4]  # Get hexadecimal ID of instance
+logging.addLevelName(9,"AddINFO")  # Create a new level below DEBUG solely for additional info
 
-logging.info('\n' + '='*60 + '\nNew instance started at ' + datetime.now().strftime("%d/%m/%y, %H:%M:%S")[:-3] +
-            '\nInstance ID: {}\n'.format(ID) + '='*60)  # Print instance start message and datetime as quick reference
+def AddINFO(self, message, *args, **kws):
+    if self.isEnabledFor(9):
+        self._log(9, message, args, **kws)
+
+logging.Logger.AddINFO = AddINFO
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)

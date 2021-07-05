@@ -1,29 +1,5 @@
 import os
 import logging
-
-def instance_id_path():
-    ID = '0x1' # default value
-    for file in os.listdir(os.getcwd()):
-        if file.endswith(".log") and not file == "log.log":  # ignore base .log file
-            try:
-                ID = hex(int(file[:-4],16) + 1) # remove the extension, increment by 1, convert to hex
-                os.remove(file)  # if exception not raised, then delete file
-            except:
-                continue  # check the next file
-
-    ID_path = './' + ID + '.log'
-
-    return ID_path
-
-logging.addLevelName(9,"AddINFO")  # Create a new level below DEBUG solely for additional info
-
-def AddINFO(self, message, *args, **kws):
-    if self.isEnabledFor(9):
-        self._log(9, message, args, **kws)
-
-logging.Logger.AddINFO = AddINFO
-# Create message through: logging.getLogger().AddINFO('YOUR MESSAGE')
-
 LOGGING_CONFIG = {
     'version': 1,
     'formatters': {'default': {
@@ -34,24 +10,18 @@ LOGGING_CONFIG = {
         'class': 'logging.StreamHandler',
         'stream': 'ext://sys.stdout',
         'formatter': 'default',
-        'level': logging.INFO
+        'level': 20
 
     }, 'file': {
         'class': 'logging.FileHandler',
         'formatter': 'default',
         'filename': './log.log',
-        'level': logging.DEBUG
+        'level': 10
     },
-        'instance': {
-        'class': 'logging.FileHandler',
-        'formatter': 'default',
-        'filename': instance_id_path(),
-        'level': 9  # Level == Additional Info; only 'instance' handler will be able to parse AddINFO messages
-    }
     },
     'root': {
         'level': 'INFO',
-        'handlers': ['console', 'file','instance']
+        'handlers': ['console', 'file']
     }
 }
 
