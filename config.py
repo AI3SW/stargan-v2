@@ -12,11 +12,14 @@ LOGGING_CONFIG = {
         'formatter': 'default',
         'level': 20
 
-    }, 'file': {
-        'class': 'logging.FileHandler',
+    },  'file': {
+        'class': 'logging.handlers.TimedRotatingFileHandler',
         'formatter': 'default',
         'filename': './log.log',
-        'level': 10
+        'level': 10,
+        'when': 'D',
+        'interval': 30,
+        'backupCount': 1
     },
     },
     'root': {

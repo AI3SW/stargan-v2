@@ -6,8 +6,6 @@ from flask import Flask
 
 dictConfig(LOGGING_CONFIG)
 
-from datetime import datetime
-
 logging.getLogger().setLevel(0)  # Allows all messages to go through logger, msg to be filtered at handlers
 
 logging.addLevelName(9,"AddINFO")  # Create a new level below DEBUG solely for additional info
