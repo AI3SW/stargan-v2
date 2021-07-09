@@ -6,15 +6,17 @@ from flask import Flask
 
 dictConfig(LOGGING_CONFIG)
 
-logging.getLogger().setLevel(0)  # Allows all messages to go through logger, msg to be filtered at handlers
+logging.getLogger().setLevel(0)  # Allows all messages to go through logger
 
-logging.addLevelName(9,"AddINFO")  # Create a new level below DEBUG solely for additional info
+logging.addLevelName(9, "AddINFO")  # Create a new level below DEBUG
+
 
 def AddINFO(self, message, *args, **kws):
     if self.isEnabledFor(9):
         self._log(9, message, args, **kws)
 
 logging.Logger.AddINFO = AddINFO
+
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
