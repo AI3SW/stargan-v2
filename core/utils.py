@@ -25,7 +25,6 @@ import torchvision
 import torchvision.utils as vutils
 
 
-
 def save_json(json_file, filename):
     with open(filename, 'w') as f:
         json.dump(json_file, f, indent=4, sort_keys=False)
