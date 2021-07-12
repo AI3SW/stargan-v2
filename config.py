@@ -10,13 +10,13 @@ LOGGING_CONFIG = {
         'class': 'logging.StreamHandler',
         'stream': 'ext://sys.stdout',
         'formatter': 'default',
-        'level': 20
+        'level': 'INFO'
 
     },  'file': {
         'class': 'logging.handlers.TimedRotatingFileHandler',
         'formatter': 'default',
         'filename': './log.log',
-        'level': 10,
+        'level': 'DEBUG',
         'when': 'D',
         'interval': 30,
         'backupCount': 1
