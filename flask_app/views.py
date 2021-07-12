@@ -9,6 +9,11 @@ from flask_app.model import model_store
 blueprint = Blueprint('blueprint', __name__)
 
 
+@blueprint.before_request
+def log_request_info():
+    logging.info('Headers: %s', request.headers)
+
+
 @blueprint.route('/')
 def index():
     logging.info("GET /")
