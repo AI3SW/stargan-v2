@@ -9,11 +9,6 @@ from flask_app.model import model_store
 blueprint = Blueprint('blueprint', __name__)
 
 
-@blueprint.before_request
-def log_request_info():
-    logging.info('Headers: %s', request.headers)
-
-
 @blueprint.route('/')
 def index():
     logging.info("GET /")
@@ -29,9 +24,7 @@ def predict():
         start_time = time.time()
 
         model = model_store.get('stargan')
-        
-        logging.getLogger().AddINFO(str(req))
-        
+
         # convert images in base64 string format to PIL image
         output_img = model.predict({
             'src_img': base64_to_image(req['src_img']),

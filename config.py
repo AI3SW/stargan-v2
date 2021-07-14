@@ -1,5 +1,3 @@
-import os
-import logging
 LOGGING_CONFIG = {
     'version': 1,
     'formatters': {'default': {
@@ -15,11 +13,10 @@ LOGGING_CONFIG = {
     },  'file': {
         'class': 'logging.handlers.TimedRotatingFileHandler',
         'formatter': 'default',
-        'filename': './log.log',
+        'filename': './logs/log.txt',
         'level': 'DEBUG',
         'when': 'D',
-        'interval': 30,
-        'backupCount': 1
+        'backupCount': 30
     },
     },
     'root': {
