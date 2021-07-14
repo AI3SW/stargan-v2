@@ -6,6 +6,7 @@ from flask import Flask
 
 dictConfig(LOGGING_CONFIG)
 
+
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object('config')
