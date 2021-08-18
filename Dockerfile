@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/pytorch:21.06-py3
+FROM pytorch/pytorch:1.7.0-cuda11.0-cudnn8-runtime
 
 # https://stackoverflow.com/questions/47113029/importerror-libsm-so-6-cannot-open-shared-object-file-no-such-file-or-directo
 # https://stackoverflow.com/questions/44331836/apt-get-install-tzdata-noninteractive
@@ -17,8 +17,9 @@ WORKDIR /stargan-v2
 
 RUN conda env create --file environment.yml
 
-# for conda activate to work
-ENV PATH /opt/conda/envs/stargan-v2/bin:$PATH
+# conda activate stargan-v2 on start
+RUN echo . /opt/conda/etc/profile.d/conda.sh >> ~/.bashrc
+RUN echo conda activate stargan-v2 >> ~/.bashrc
 
 EXPOSE 5000
 
