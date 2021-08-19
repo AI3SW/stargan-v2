@@ -76,6 +76,8 @@ For a demo of the `predict` endpoint, refer to [Test_flask_app](notebooks/Test_f
 1. Create ["deployment specific"](https://flask.palletsprojects.com/en/2.0.x/config/#instance-folders) config file `config.py` in `instance` directory with the following variables:
     * `SECRET_KEY`
 
+1. Create `logs` directory in project folder for storage of log files
+
 ### Using Flask Built-in Development Server
 
 ```bash

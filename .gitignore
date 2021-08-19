@@ -106,4 +106,4 @@ venv.bak/
 data
 expr
 .vscode
-logs
+log.txt*
