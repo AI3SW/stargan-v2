@@ -86,13 +86,6 @@ $ flask run --host=0.0.0.0 --port=5000
 
 ## Docker
 
-### Before Building
-```bash
-$ # https://forums.developer.nvidia.com/t/are-nvidia-docker-images-available-publicly/54619
-$ docker login nvcr.io
-
-```
-
 ### Build and Run
 
 ```bash
