@@ -26,4 +26,7 @@ RUN chmod +x entrypoint.sh
 EXPOSE 5000
 
 ENV FLASK_APP=flask_app
-CMD ["./entrypoint.sh"]
+
+# https://towardsdatascience.com/conda-pip-and-docker-ftw-d64fe638dc45#77e9
+ENTRYPOINT [ "./entrypoint.sh" ]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
