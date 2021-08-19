@@ -85,3 +85,16 @@ $ export FLASK_APP=flask_app
 $ # export FLASK_ENV=development
 $ flask run --host=0.0.0.0 --port=5000
 ```
+
+## Docker
+
+### Build and Run
+
+```bash
+$ docker build -t stargan-api -f Dockerfile .
+
+$ docker run --gpus all -d --rm -p 5000:5000 -v $(pwd)/instance:/stargan-v2/instance --name stargan-api stargan-api
+
+$ # tear down container
+$ docker stop stargan-api
+```

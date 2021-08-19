@@ -104,6 +104,5 @@ venv.bak/
 .mypy_cache/
 
 data
-expr
 .vscode
-log.txt*
+log.log
